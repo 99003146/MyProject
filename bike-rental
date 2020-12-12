@@ -1,0 +1,38 @@
+class DisplayBike:
+    def __init__(self, bikes,bike_name,number):
+        self.bikes = bikes
+        self.bike_name=bike_name
+        self.number=number
+
+    def display(self):
+        for (bike, no) in zip(self.bikes.keys(), self.bikes.values()):
+            print("Bike:", bike, "|", "Numbers available: ", no)
+
+    def rent(self):
+        if self.bike_name in self.bikes.keys():
+            value=self.bikes.get(self.bike_name)
+            newval=value-self.number;
+            if(newval>=0):
+                self.bikes[self.bike_name]=newval
+                print("You have successfully rented %d %s" %(self.number, self.bike_name))
+            else:
+                print("Required Number of bikes not available")
+
+
+
+    def ret_bike(self):
+        if self.bike_name in self.bikes.keys():
+            cost=self.hours_used*self.number*50
+            print("The cost is",cost)
+            value=self.bikes.get(self.bike_name)
+            newval=value+self.number;
+            self.bikes[self.bike_name]=newval
+
+
+
+
+obj=DisplayBike({"Pulsar": 20, "Unicorn": 30, "Royal Enfield": 10},"Pulsar",10)
+obj.display()
+print("****************************************************")
+obj.rent()
+#def __init__(self, bikes, bike_name, number, hours_used):
